@@ -28,7 +28,7 @@
   * 布隆过滤器
   * 位图：相当于以 ***位(bit)*** 为单位的数字，数组中每个单元只能储存二进制数0或1
   * 作用： 布隆过滤器可以用于检索一个元素是否在一个集合中
-![image](https://github.com/Dershine/java_senior/tree/main/image/Snipaste_2023-10-09_17-01-27.png)
+![布隆过滤器](image/Snipaste_2023-10-09_17-01-27.png)
 
 
 
