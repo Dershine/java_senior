@@ -242,7 +242,17 @@
     * 幻读
   
   * 解决方案：隔离
-    * 未提交读 Read Uncommitted
+    * 读未提交 Read Uncommitted
     * 读已提交 Read committed
     * 可重复读 Repeatable Read （默认）
     * 串行化 Serializable
+
+* redo log 和 undo log
+
+  * redo log
+    * 记录的是数据页的物理变化，服务宕机时可用来同步数据
+
+  * undo log
+    * 记录的时逻辑日志，当事务回滚时，通过逆操作恢复原来的数据
+
+  * redo log 保证事务的持久性，undo log 保证事务的原子性和一致性
