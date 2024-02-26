@@ -328,3 +328,14 @@
 
   * 非public方法，无法触发事务回滚
     * 解决方法：改为public方法
+
+
+* Spring中bean的生命周期
+  * 通过BeanDefinition获取定义Bean的信息
+  * 调用构造函数实例化Bean
+  * bean的依赖注入
+  * 处理Aware接口 (BeanNameAware、BeanFactoryAware、ApplicationContextAware)
+  * Bean的前置处理器BeanPostProcessor-before
+  * 初始化方法（InitializingBean、init-method）
+  * Bean的后置处理器BeanPostProcessor-after
+  * 销毁Bean
