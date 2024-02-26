@@ -316,3 +316,15 @@
 
 * Spring中的事务时如何实现的
   * 其本质是通过AOP功能，对方法前后进行拦截，在执行方法前开启事务，在执行完目标方法之后根据执行情况提交或回滚事务
+
+
+* Spring中事务失效的场景
+  * 异常捕获处理，自己处理了异常，没有抛出，无法触发事务回滚
+    * 解决方法：手动throw抛出
+
+  * 抛出的异常为检查异常，如FileNotFoundException，无法触发事务回滚
+    * 解决方法：配置rollbackFor属性  ```@Transactional(rollbackFor=Exception.class)```
+    * 只要抛出异常就会回滚
+
+  * 非public方法，无法触发事务回滚
+    * 解决方法：改为public方法
