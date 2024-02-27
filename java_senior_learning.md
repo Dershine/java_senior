@@ -386,3 +386,70 @@
 
     * 前后端分离模式
     * 调用处理器后将返回结果转换为json并响应
+
+
+* Springboot自动配置原理
+
+  * 在SpringBoot项目的引导类上有一个注解@SpringBootApplication，这个注解是对三个注解进行了封装，分别是
+    * @SpringBootConfiguration
+    * @EnableAutoConfiguration
+    * @ComponentScan
+
+  * 其中@EnableAutoConfiguration为核心注解，该注解通过@Import导入对应的配置选择器。
+  * 选择器内部就是该项目和该项目引用的Jar包的classpath路径下META-INF/spring.factory文件中所配置的类的全类名。
+  * 在这些配置类中所定义的Bean会根据条件注解```所指定的条件来决定```是否要将其导入到spring容器中
+
+  * 条件判断会有像@ConditionalOnClass这样的注解，判断是否有对应的class文件，如果有则加载该类，把这个配置类的所有Bean放入spring容器中使用
+
+
+* Spring的常见注解有哪些
+
+  * @Component   @Controller  @Service  @Repository
+    * 使用在类上用于实例化Bean
+
+  * @Autowired
+    * 使用在字段上用于根据类型依赖注入
+
+  * @Qualifier
+    * 结合@Autowired一起使用用于根据名称进行依赖注入
+
+  * @Scope
+    * 标注Bean的作用范围
+
+  * @Configuration
+    * 指定当前类是一个Spring配置类，当创建容器时会从该类上加载注解
+
+  * @ComponentScan
+    * 用于指定Spring在初始化容器时要扫描的包
+
+  * @Bean
+    * 使用在指定方法上，标注将该方法的返回值储存到Spring容器中
+
+  * @Import
+    * 使用@Import导入的类会被Spring加载到IOC容器中
+
+  * @Aspect  @Before  @After  @Around  @Pointcut
+    * 用于切面编程（AOP）
+
+* SpringMVC的常见注解有哪些
+
+  * @RequestMapping
+    * 用于映射请求路径，可以定义在类上和方法上。用于类上，则表示类中的所有方法都是以该地址作为父路径
+
+  * @RequestBody
+    * 注解实现接受Http请求的json数据，将json转换为java对象
+
+  * @RequestParam
+    * 指定请求参数的名称
+
+  * @PathViriable
+    * 从请求路径下获取请求参数(/user/{id})，传递给方法的形式参数
+
+  * @ResponseBody
+    * 注解实现将controller方法返回对象转化为json对象响应给客户端
+
+  * @RequestHeader
+    * 获取指定的请求头数据
+
+  * @RestController
+    * @Controller + @ResponseBody
