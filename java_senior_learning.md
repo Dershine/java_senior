@@ -468,6 +468,8 @@
     * Spring组件扫描
 
 
+### MyBatis
+
 * MyBatis执行流程
   * 读取MyBatis配置文件：mybatis-config.xml加载运行环境和映射文件
   * 构造会话工厂SqlSessionFctory
@@ -476,3 +478,16 @@
   * Executor接口的执行方法中有一个MappedStatement类型的参数，封装了映射信息
   * 输入参数映射
   * 输出结果映射
+
+
+* MyBatis是否支持延迟加载
+  * 支持，但默认不开启
+  * 延迟加载：需要时再加载，不需要则不加载
+  * MyBatis支持一对一关联对象和一对多关联集合对象的延迟加载
+  * 再MyBatis配置文件中，可以配置是否启用延迟加载```lazyLoadingEnabled = true | false```，默认时关闭的
+
+
+* 延迟加载的底层原理
+  * 使用CGLIB创建目标对象的代理对象
+  * 当调用目标方法时，进入拦截器invoke方法，发现目标方法时null值，执行sql查询
+  * 获取数据以后，调用set方法设置属性值，再继续查询目标方法，就有值了
