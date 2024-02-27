@@ -466,3 +466,13 @@
 
   * @ComponentScan
     * Spring组件扫描
+
+
+* MyBatis执行流程
+  * 读取MyBatis配置文件：mybatis-config.xml加载运行环境和映射文件
+  * 构造会话工厂SqlSessionFctory
+  * 会话工厂创建SqlSession对象（包含了执行SQL语句的所有方法）
+  * 操作数据库的接口，Executor执行器，同时负责查询缓存的维护
+  * Executor接口的执行方法中有一个MappedStatement类型的参数，封装了映射信息
+  * 输入参数映射
+  * 输出结果映射
