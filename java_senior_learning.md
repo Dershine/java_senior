@@ -431,6 +431,7 @@
   * @Aspect  @Before  @After  @Around  @Pointcut
     * 用于切面编程（AOP）
 
+
 * SpringMVC的常见注解有哪些
 
   * @RequestMapping
@@ -453,3 +454,15 @@
 
   * @RestController
     * @Controller + @ResponseBody
+
+
+* SpringBoot的常见注解有哪些
+
+  * @SpringBootConfiguration
+    * 组合了@Configuration注解，实现配置文件的功能
+
+  * @EnableAutoConfiguration
+    * 打开自动配置的功能，也可以关闭某个自动配置的选项
+
+  * @ComponentScan
+    * Spring组件扫描
