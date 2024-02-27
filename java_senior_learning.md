@@ -491,3 +491,13 @@
   * 使用CGLIB创建目标对象的代理对象
   * 当调用目标方法时，进入拦截器invoke方法，发现目标方法时null值，执行sql查询
   * 获取数据以后，调用set方法设置属性值，再继续查询目标方法，就有值了
+
+
+* Mybatis的一级、二级缓存
+  * 一级缓存
+    * 基于PerpetualCache的HashMap本地缓存，器储存作用域为Session，当Session进行Flush或close之后，该Session中的所有Cache就将清空，默认打开一级缓存
+  * 二级缓存
+    * 基于namespace和mapper的作用域起作用的，不是依赖于SQL session，默认也是采用PerpetualCache，HashMap储存。需要单独开启，一个是核心配置，一个是mapper映射文件
+
+* Mybatis的二级缓存什么时候会清理缓存中的数据
+  * 当某一个作用域（一级缓存Session/二级缓存Namespaces）的进行了```新增、修改、删除```操作后，默认该作用域下所有select中的缓存被clear
