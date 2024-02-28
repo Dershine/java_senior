@@ -519,7 +519,7 @@
 
   * 服务熔断
     * Hystrix、sentinel（服务保护）
-    
+
   * 服务网关
     * Gateway、Zuul
 
@@ -543,3 +543,19 @@
     * Nacos集群默认采用AP方式，档集群中存在非临时实例时，采用CP模式；Eureka采用AP方式
 
   * Nacos还支持配置中心，eureka则只有注册中心，也是选择Nacos的一个重要原因
+
+
+* 负载均衡
+
+  * 负载均衡如何实现
+    * 使用Ribbon，在使用feign远程调用的过程中，底层的负载均衡使用了ribbon
+
+  * Ribbon负载均衡的策略
+    * RoundRobinRule  轮询
+    * WeightedResponseTimeRule  权重，响应时间越长，权重越小
+    * RandomEule  随机
+    * ZoneAvoidanceRule  区域敏感，以Zone对服务器进行分类，在对Zone内的多个服务做轮询
+
+  * 自定义负载均衡
+    * 创建类实现IRule接口，可以指定负载均衡策略（全局）
+    * 在客户端的配置文件中，可以配置某一个服务调用的负载均衡策略（局部）
